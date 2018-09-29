@@ -11,4 +11,9 @@ class User_controller extends CI_Controller {
                
                 $this->load->view('login');
         }
+     public function home()
+        {
+               
+                $this->load->view('home');
+        }
 }
