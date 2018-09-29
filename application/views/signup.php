@@ -1,39 +1,90 @@
-<!doctype html>
-<html>
-<head>
-<title>Form</title>
-<link href="<?= base_url('assets/css/styles.css')?>" rel="stylesheet">
-<script src="<?= base_url('assets/js/jquery.js')?>"></script>
-<script src="<?= base_url('assets/js/main.js')?>"></script>
-</head>
-<body>
-<form action="#" method="post">
-  <h2>Sign Up</h2>
-        <p>
-			<label for="Email" class="floatLabel">Fullname</label>
-			<input id="fname" name="fname" type="text">
-		</p>
-        <p>
-			<label for="Email" class="floatLabel">Date of Birth</label>
-			<input id="dob" name="dob" type="text">
-		</p>
-		<p>
-			<label for="Email" class="floatLabel">Email</label>
-			<input id="Email" name="Email" type="text">
-		</p>
-		<p>
-			<label for="password" class="floatLabel">Password</label>
-			<input id="password" name="password" type="password">
-			<span>Enter a password longer than 8 characters</span>
-		</p>
-		<p>
-			<label for="confirm_password" class="floatLabel">Confirm Password</label>
-			<input id="confirm_password" name="confirm_password" type="password">
-			<span>Your passwords do not match</span>
-		</p>
-		<p>
-			<input type="submit" value="Create My Account" id="submit">
-		</p>
-</form>
-</body>
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Register</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body class="bg-dark">
+
+    <div class="container">
+      <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="firstName" name="First_name" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                    <label for="firstName">First name</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="lastName" name="Last_name"class="form-control" placeholder="Last name" required="required">
+                    <label for="lastName">Last name</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" name="Email "class="form-control" placeholder="Email address" required="required">
+                <label for="inputEmail">Email address</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" name="Password" class="form-control" placeholder="Password" required="required">
+                    <label for="inputPassword">Password</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="confirmPassword" name="confirmpassowrd"class="form-control" placeholder="Confirm password" required="required">
+                    <label for="confirmPassword">Confirm password</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary btn-block" href="login.html">Register</a>
+          </form>
+          <div class="text-center">
+            <a class="d-block small mt-3" href="login.php">Login Page</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  </body>
+
 </html>

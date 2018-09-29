@@ -11,9 +11,10 @@ class User_controller extends CI_Controller {
                
                 $this->load->view('login');
         }
-     public function home()
+       public function patient()
         {
                
-                $this->load->view('home');
+                $this->load->view('patient');
         }
+    
 }
