@@ -33,6 +33,7 @@
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
+                   
                   <div class="form-label-group">
                     <input type="text" id="firstName" name="First_name" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
                     <label for="firstName">First name</label>
