@@ -5,6 +5,7 @@ class User_controller extends CI_Controller {
         {
                 $this->load->view('signup');
 //                 $this->load->view('signupdb');
+                   echo"login";
               
         }
          public function login()
