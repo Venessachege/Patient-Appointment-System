@@ -29,18 +29,37 @@
       <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-          <form>
+             <?php
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+ 
+                  if($success_msg){
+                    ?>
+                    <div class="alert alert-success">
+                      <?php echo $success_msg; ?>
+                    </div>
+                  <?php
+                  }
+                  if($error_msg){
+                    ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error_msg; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
+          <form action="<?php echo base_url('index.php/user_controller/login_user');?>" method="post">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                <input type="email" id="Email"  name="Email"class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
                 <label for="inputEmail">Email address</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
-              </div>
+                    <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
+                    <label for="Password">Password</label>
+                  </div>
             </div>
             <div class="form-group">
               <div class="checkbox">
@@ -50,7 +69,7 @@
                 </label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="index.html">Login</a>
+            <button type="submit" class="btn btn-primary btn-block"  name="login">Login</button>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="signup.php">Register an Account</a>
