@@ -41,6 +41,13 @@ public function email_check($email){
   }
 
 }
+     //display appointments
+     public function get_data($a)  
+      {  
+         //data is retrive from this query  
+         $query = $this->db->get('appointments');  
+         return $query->result();  
+      }  
 
 
 }

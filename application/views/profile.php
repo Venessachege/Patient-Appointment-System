@@ -188,6 +188,29 @@
           </div>
 
         </div>
+          <?php echo base_url('index.php/user_controller/appointments');?>
+          <div class="row">
+                
+        
+   <table border="1">  
+      <tbody>  
+         <tr>  
+            <td>PatientName</td>  
+            <td>Time</td>  
+         </tr>  
+         <?php  
+         foreach ($data as $row)  
+         {  
+            ?><tr>  
+            <td><?php echo $row->patientname;?></td>  
+            <td><?php echo $row->time;?></td>  
+            </tr>  
+         <?php }  
+         ?>  
+      </tbody>  
+   </table>  
+ 
+          </div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->

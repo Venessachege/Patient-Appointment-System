@@ -99,6 +99,12 @@ public function user_logout(){
   $this->session->sess_destroy();
   redirect('user/login_view', 'refresh');
 }
+    public function appointments()  
+      {  
+         $a['data']=$this->model->get_data('demo');
+         
+         $this->load->view('profile',$a);  
+      }  
 
 }
 
