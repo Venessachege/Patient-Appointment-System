@@ -101,9 +101,8 @@ public function user_logout(){
 }
     public function appointments()  
       {  
-         $a['data']=$this->model->get_data('demo');
-         
-         $this->load->view('profile',$a);  
+         $this->data['appointments'] = $this->user_model->get_data(); // calling Post model method getPosts()
+         $this->load->view('profile', $this->data); // load the vie
       }  
 
 }

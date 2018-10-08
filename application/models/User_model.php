@@ -42,15 +42,17 @@ public function email_check($email){
 
 }
      //display appointments
-     public function get_data($a)  
+     public function get_data()  
       {  
-         //data is retrive from this query  
-         $query = $this->db->get('appointments');  
-         return $query->result();  
+          $this->db->select("*"); 
+          $this->db->from('appointments');
+          $query = $this->db->get();
+          if($query->num_rows() > 0) {
+          $results= $query->result();
       }  
 
-
-}
+       return $results;
+     }
 
 
 ?>

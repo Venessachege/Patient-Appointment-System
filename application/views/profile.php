@@ -161,24 +161,30 @@
             <div class="card-header">
               <i class="fas fa-table"></i>
               Available Appointments</div>
+              <?php echo base_url('index.php/user_controller/appointments');?>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Condition</th>
+                      <th>Patient Name</th>
                       <th>Time</th>
                     </tr>
+                      
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Condition</th>
-                      <th>Time</th>
-                    </tr>
-                  </tfoot>
+                 
                   <tbody>
+                       <?php  
+                      if( !empty($results) ) {
+                  foreach ($results as $row)  
+                 {  
+                    ?><tr>  
+                    <td><?php echo $row->patientname;?></td>  
+                    <td><?php echo $row->time;?></td>  
+                    </tr>  
+                      }
+                }  
+                 ?>  
                     
                   </tbody>
                 </table>
@@ -192,23 +198,23 @@
           <div class="row">
                 
         
-   <table border="1">  
-      <tbody>  
-         <tr>  
-            <td>PatientName</td>  
-            <td>Time</td>  
-         </tr>  
-         <?php  
-         foreach ($data as $row)  
-         {  
-            ?><tr>  
-            <td><?php echo $row->patientname;?></td>  
-            <td><?php echo $row->time;?></td>  
-            </tr>  
-         <?php }  
-         ?>  
-      </tbody>  
-   </table>  
+           <table border="1">  
+              <tbody>  
+                 <tr>  
+                    <td>PatientName</td>  
+                    <td>Time</td>  
+                 </tr>  
+                 <?php  
+                 foreach ($appointments as $appointment)  
+                 {  
+                    ?><tr>  
+                    <td><?php echo $appointment->patientname;?></td>  
+                    <td><?php echo $appointment->time;?></td>  
+                    </tr>  
+                 <?php }  
+                 ?>  
+              </tbody>  
+           </table>  
  
           </div>
         <!-- /.container-fluid -->
