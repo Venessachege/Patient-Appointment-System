@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Doctor's Profile</title>
+    <title>SB Admin - Blank Page</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,10 @@
 
     <!-- Custom styles for this template-->
     <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+	    
+
+
+    
 
   </head>
 
@@ -29,7 +33,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Doctor</a>
+      <a class="navbar-brand mr-1" href="index.html">Patients Module</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -92,15 +96,22 @@
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+        <li class="nav-item">
+          <a class="nav-link" href="home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Appiontments</span>
+            <span>Home</span>
           </a>
         </li>
-        
-          
-            
+        <li class="nav-item">
+          <a class="nav-link" href="book">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Book Appointment</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Entries</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -110,82 +121,55 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Appointments</a>
+              <a href="index.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active">Available Doctors</li>
           </ol>
 
-          <!-- Icon Cards-->
-          <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-comments"></i>
-                  </div>
-                  <div class="mr-5">26 New Messages!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-list"></i>
-                  </div>
-                  <div class="mr-5">11 New Appointments</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            
-            
-          </div>
-
-          <!-- Area Chart Example-->
-          
-
-          <!-- DataTables Example -->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Available Appointments</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
+          <!-- Page Content -->
+          <h1>Available Doctors</h1>
+          <hr>
+		  <div class="card-body">
+		  <div class="row">
+		  <div class="col-md-12">
+		  <div class="table-responsive">
+		  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		  <thead>
                     <tr>
+					  <th>Number</th>
                       <th>Name</th>
-                      <th>Condition</th>
-                      <th>Time</th>
+                      <th>Position</th>
+                      <th>Office</th>
                     </tr>
-                  </thead>
-                  <tfoot>
+            </thead>
+			<tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Condition</th>
-                      <th>Time</th>
+                      <th>Number</th>
+					  <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
                     </tr>
-                  </tfoot>
-                  <tbody>
-                    
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
+            </tfoot>
+			<tbody>
+			  <?php
+  $i=1;
+  foreach($data as $row)
+  {
+  echo "<tr>";
+  echo "<td>".$i."</td>";
+  echo "<td>".$row->Name."</td>";
+  echo "<td>".$row->Position."</td>";
+  echo "<td>".$row->Office."</td>";
+  echo "</tr>";
+  $i++;
+  }
+   ?>
+			</table>
+			
+		  </div>
+		  </div>
+		  </div>
+		  </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -236,17 +220,8 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
 
   </body>
 
