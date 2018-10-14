@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html>
@@ -9,19 +11,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Doctor's Profile</title>
+    <title>Patient - Dashboard</title>
 
     <!-- Bootstrap core CSS-->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
 
   </head>
 
@@ -29,7 +31,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Doctor</a>
+      <a class="navbar-brand mr-1" href="index.html">Doctor Module</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -93,14 +95,18 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Appiontments</span>
+            <span>Dashboard</span>
           </a>
         </li>
-        
-          
-            
+       
+          <li class="nav-item active">
+          <a class="nav-link" href="appointment.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Appointments</span>
+          </a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -110,7 +116,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Appointments</a>
+              <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
@@ -133,13 +139,14 @@
                 </a>
               </div>
             </div>
+              <br>
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-warning o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">11 New Appointments</div>
+                  <div class="mr-5">11 Appointments </div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -149,14 +156,47 @@
                 </a>
               </div>
             </div>
-            
-            
-          </div>
+              <br>
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                  </div>
+                  <div class="mr-5">123 New updates!</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="#">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+              <br>
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-life-ring"></i>
+                  </div>
+                  <div class="mr-5">13 Notifications!</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="#">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div><br>
 
           <!-- Area Chart Example-->
-          
+         
 
           <!-- DataTables Example -->
+<<<<<<< HEAD
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
@@ -192,6 +232,11 @@
         </div>
         
          
+=======
+         
+
+        </div>
+>>>>>>> fc3d7e5357607c0283318c83d291951892dd1c54
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
@@ -248,9 +293,14 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
 
-    <!-- Demo scripts for this page-->
+    <!-- Demo scripts for this page-->s
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
 
   </body>
+<<<<<<< HEAD
 </html>
+=======
+
+</html>
+>>>>>>> fc3d7e5357607c0283318c83d291951892dd1c54
