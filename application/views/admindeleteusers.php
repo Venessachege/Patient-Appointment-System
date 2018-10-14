@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Doctor's Profile</title>
+    <title>Admin</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,18 +36,10 @@
       </button>
 
       <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+     
 
       <!-- Navbar -->
+<!--
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,6 +77,7 @@
           </div>
         </li>
       </ul>
+-->
 
     </nav>
 
@@ -92,15 +85,32 @@
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Appiontments</span>
+            <span>Home</span>
           </a>
         </li>
-        
-          
-            
+        <li class="nav-item">
+          <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Add Users</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Delete Users</span></a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Book Appointments</span></a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Cancel Appointments</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -110,12 +120,13 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Appointments</a>
+              <a href="#">Users</a>
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
 
           <!-- Icon Cards-->
+<!--
           <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-primary o-hidden h-100">
@@ -152,6 +163,7 @@
             
             
           </div>
+-->
 
           <!-- Area Chart Example-->
           
@@ -160,15 +172,16 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Available Appointments</div>
+             Users</div>
              
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Patient Name</th>
-                      <th>Time</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                     <th>Email</th>
                     </tr>
                       
                   </thead>
@@ -177,8 +190,9 @@
                       <?php if(!empty($results)): ?>
                         <?php foreach($results as $row) :?>
                             <tr>
-                                <td><?= $row->patientname; ?></td>  
-                                <td><?= $row->time; ?></td>                            
+                                <td><?= $row->First_name; ?></td>  
+                                <td><?= $row->Last_name; ?></td>         
+                                 <td><?= $row->Email; ?></td>         
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  

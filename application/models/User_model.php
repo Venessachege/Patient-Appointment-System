@@ -43,7 +43,35 @@ public function email_check($email){
 }
      //display appointments
      public function get_data()  
-      {  
+      {   $results = array();
+          $this->db->select("*"); 
+          $this->db->from('appointments');
+          $query = $this->db->get();
+          if($query->num_rows() > 0) {
+          $results= $query->result();
+      }  
+
+       return $results;
+     }
+    public function adminadduser($user){
+
+
+       $this->db->insert('users', $user);
+
+}
+ public function admindeleteusers()  
+      {   $results = array();
+          $this->db->select("*"); 
+          $this->db->from('users');
+          $query = $this->db->get();
+          if($query->num_rows() > 0) {
+          $results= $query->result();
+      }  
+
+       return $results;
+     }
+    public function admincancelappointments()  
+      {   $results = array();
           $this->db->select("*"); 
           $this->db->from('appointments');
           $query = $this->db->get();
@@ -54,5 +82,5 @@ public function email_check($email){
        return $results;
      }
 
-
+}
 ?>
