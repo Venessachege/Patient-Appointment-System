@@ -98,7 +98,7 @@
             <span>Add Users</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/admindeleteusers");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Delete Users</span></a>
         </li>
@@ -131,36 +131,29 @@
           <hr>
         <div class="card-header">Register an Account</div>
         <div class="card-body">
-        <form  method="post" action="<?php echo base_url('index.php/user_controller/adminadduser');?>">
-            <div class="form-group">
-            <div class="form-group">
-              <div class="form-row">
+        <form  method="post" action="<?php echo base_url('user_controller/adminadduser');?>">
+              <div class="row">
                 <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="text" id="firstName" class="form-control"name="First_name" placeholder="First name" required="required" autofocus="autofocus">
-                    <label for="firstName">FirstName</label>
+                  <div class="form-group">
+                    <input type="text" id="First_name" class="form-control"name="First_name" placeholder="First name" required="required" autofocus="autofocus">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="text" id="lastName" class="form-control" placeholder="Last name" name="Last_name"required="required">
-                    <label for="lastName">LastName</label>
+                  <div class="form-group">
+                    <input type="text" id="Last_name" class="form-control" placeholder="Last Name" name="Last_name"required="required">
                   </div>
                 </div>
               </div>
-            </div>
             <div class="form-group">
           <div class="form-row">
              <div class="col-md-6">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="Email" required="required">
-                <label for="inputEmail">Email address</label>
+              <div class="form-group">
+                <input type="email" id="Email" class="form-control" placeholder="Email address" name="Email" required="required">
               </div>
             </div>
                <div class="col-md-6">
-              <div class="form-label-group">
-                <input type="text" id="usertype" class="form-control" placeholder="Usertype" name="Usertype_id" required="required">
-                <label for="Usertype">Usertype</label>
+              <div class="form-group">
+                <input type="text" id="Usertype_id" class="form-control" placeholder="Usertype" name="Usertype_id" required="required">
               </div>
             </div>
                 </div>
@@ -168,22 +161,21 @@
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" name="password"placeholder="Password" required="required">
-                    <label for="inputPassword">Password</label>
+                  <div class="form-group">
+                    <input type="password" id="password" class="form-control" name="password"placeholder="Password" required="required">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="password" id="confirmPassword" class="form-control" name="confirmpassword"placeholder="Confirm password" required="required">
-                    <label for="confirmPassword">Confirm password</label>
+                  <div class="form-group">
+                    <input type="password" id="confirmPassword" class="form-control" name="confirmPassword"placeholder="Confirm password" required="required">
                   </div>
                 </div>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="#" name="adduser" type="submit">Add</a>
+            <button class="btn btn-primary btn-block" name="adduser" type="submit">Add</button>
           </form>
 		  </div>
+            
 		  
 
         </div>

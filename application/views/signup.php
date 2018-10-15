@@ -35,50 +35,50 @@
                     echo $error_msg;
                   }
                    ?>
-          <form  method="post" action="<?php echo base_url('index.php/user_controller/register_user');?>">
+          <form  method="post" action="<?php echo base_url('user_controller/register_user');?>">
             <div class="form-group">
-              <div class="form-row">
+              <div class="row">
                 <div class="col-md-6">
                    
-                  <div class="form-label-group">
-                    <input type="text" id="firstName" name="First_name" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
-                    <label for="firstName">First name</label>
+                  <div class="form-group">
+                    <input type="text" id="firstName" name="First_name" class="form-control" placeholder="First name" required autofocus="autofocus">
+                   
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="text" id="Last_Name" name="Last_name"class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
-                    <label for="lastName">Last name</label>
+                  <div class="form-group">
+                    <input type="text" id="LastName" name="Last_name" class="form-control" placeholder="Last name" required autofocus>
+                   
                   </div>
                 </div>
               </div>
             </div>
                <div class="form-group">
-              <div class="form-row">
+              <div class="row">
                 <div class="col-md-6">
                    
-                  <div class="form-label-group">
+                  <div class="form-group">
                     <input type="text" id="Email" name="Email" class="form-control" placeholder="Email" required="required" autofocus="autofocus">
-                    <label for="Email">Email</label>
+                  
                   </div>
                 </div>
                <div class="col-md-6">
                    
-                  <div class="form-label-group">
+                  <div class="form-group">
                     <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
-                    <label for="Password">Password</label>
+                   
                   </div>
                 </div>
               </div>
             </div>
               <div class="form-group">
-              <div class="form-row">
+              <div class="row">
                 
-               <div class="col-md-6">
+               <div class="col-md-12">
                    
-                  <div class="form-label-group">
-                    <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
-                    <label for="confirm password">Confirm Password</label>
+                  <div class="form-group">
+                    <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confrim Password" required="required" autofocus="autofocus">
+                   
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@
             <button class="btn btn-primary btn-block"  type="submit" name="register" >Register</button>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="login.php">Login Page</a>
+            <a class="d-block small mt-3" href="<?= base_url("user_controller/login_user");?>">Login Page</a>
             <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
           </div>
         </div>

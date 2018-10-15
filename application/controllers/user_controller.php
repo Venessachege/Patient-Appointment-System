@@ -44,12 +44,12 @@ class User_controller extends CI_Controller {
         if($email_check){
           $this->user_model->register_user($user);
           $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-          redirect('login_view');
+          redirect('user_controller/login_view');
 
         }
         else{
           $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-          redirect('user');
+          redirect('user_controller/index');
         }
 
     }
@@ -68,7 +68,7 @@ class User_controller extends CI_Controller {
             $this->session->set_userdata('Last_name',$data['Last_name']);
        
 //          $this->load->view('profile.php');
-            redirect('profile');
+            redirect('user_controller/adminreg');
 
         }else{
             $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
@@ -89,23 +89,20 @@ class User_controller extends CI_Controller {
         $this->load->view('adminregistration');
     }
      public function adminadduser(){
-
         $user=array(
             'First_name'=>$this->input->post('First_name'),
             'Last_name'=>$this->input->post('Last_name'),
             'Email'=>$this->input->post('Email'),
-            'Password'=>md5($this->input->post('Password'))
-//            'Usertype_id'=>$this->input->post('Usertype_id'),
+            'Password'=>md5($this->input->post('password')),
+            'Usertype_id'=>$this->input->post('Usertype_id')
         );
         
-        print_r($user);
-
         $email_check=$this->user_model->email_check($user['Email']);
 
         if($email_check){
-          $this->user_model->register_user($user);
+          $this->user_model->adminadduser($user);
           $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-          redirect('login_view');
+          redirect('user_controller/adminreg');
 
         }
         else{
@@ -119,6 +116,15 @@ class User_controller extends CI_Controller {
             'results' => $this->user_model->admindeleteusers()
         );
         $this->load->view('admindeleteusers',$data);
+    }
+    public function delete_user($id){
+        $deleted = $this->user_model->delete_user($id);
+        if($deleted){
+            $this->session->set_flashdata('success_msg', 'Deleted record successfully.');
+        }else{
+            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+        }
+        redirect('user_controller/admindeleteusers');
     }
      public function admincancelappointments(){
        $data = array(

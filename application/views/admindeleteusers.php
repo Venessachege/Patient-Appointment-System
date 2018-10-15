@@ -182,6 +182,10 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                      <th>Email</th>
+                        <th>Usertype</th>
+                     <th>Delete</th>
+                    
+                        
                     </tr>
                       
                   </thead>
@@ -192,7 +196,9 @@
                             <tr>
                                 <td><?= $row->First_name; ?></td>  
                                 <td><?= $row->Last_name; ?></td>         
-                                 <td><?= $row->Email; ?></td>         
+                                 <td><?= $row->Email; ?></td>
+                                 <td><?= $row->Usertype_id; ?></td>
+                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID;?>"name="adduser" type="submit">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  

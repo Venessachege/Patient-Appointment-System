@@ -48,7 +48,7 @@
                     <?php
                   }
                   ?>
-          <form action="<?php echo base_url('index.php/user_controller/login_user');?>" method="post">
+          <form action="<?php echo base_url('user_controller/login_user');?>" method="post">
             <div class="form-group">
               <div class="form-label-group">
                 <input type="email" id="Email"  name="Email"class="form-control" placeholder="Email address" required="required" autofocus="autofocus">

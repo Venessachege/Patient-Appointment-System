@@ -70,6 +70,12 @@ public function email_check($email){
 
        return $results;
      }
+    
+    public function delete_user($id){
+        $this->db->where('ID',$id);
+        return $this->db->delete('users');
+    }
+    
     public function admincancelappointments()  
       {   $results = array();
           $this->db->select("*"); 
