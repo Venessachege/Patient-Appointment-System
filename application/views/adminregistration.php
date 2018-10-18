@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Blank Page</title>
+    <title>Appointment</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -103,12 +103,12 @@
             <span>Delete Users</span></a>
         </li>
             <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/adminbookappointments");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Book Appointments</span></a>
         </li>
             <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/admincancelappointments");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Cancel Appointments</span></a>
         </li>
@@ -131,6 +131,25 @@
           <hr>
         <div class="card-header">Register an Account</div>
         <div class="card-body">
+             <?php
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+ 
+                  if($success_msg){
+                    ?>
+                    <div class="alert alert-success">
+                      <?php echo $success_msg; ?>
+                    </div>
+                  <?php
+                  }
+                  if($error_msg){
+                    ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error_msg; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
         <form  method="post" action="<?php echo base_url('user_controller/adminadduser');?>">
               <div class="row">
                 <div class="col-md-6">
@@ -167,7 +186,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input type="password" id="confirmPassword" class="form-control" name="confirmPassword"placeholder="Confirm password" required="required">
+                    <input type="password" id="confirmpassword" class="form-control" name="confirmpassword"placeholder="Confirm password" required="required">
                   </div>
                 </div>
               </div>
@@ -184,7 +203,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+              <span>Copyright © Appointment System 2018</span>
             </div>
           </div>
         </footer>

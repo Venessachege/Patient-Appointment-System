@@ -97,17 +97,17 @@
             <span>Add Users</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/adminreg");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Delete Users</span></a>
         </li>
             <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/adminbookappointments");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Book Appointments</span></a>
         </li>
             <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/admincancelappointments");?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Cancel Appointments</span></a>
         </li>
@@ -175,9 +175,30 @@
              Users</div>
              
             <div class="card-body">
+                 <?php
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+ 
+                  if($success_msg){
+                    ?>
+                    <div class="alert alert-success">
+                      <?php echo $success_msg; ?>
+                    </div>
+                  <?php
+                  }
+                  if($error_msg){
+                    ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error_msg; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <h3>Patients</h3>
                   <thead>
+                    
                     <tr>
                       <th>First Name</th>
                       <th>Last Name</th>
@@ -198,7 +219,38 @@
                                 <td><?= $row->Last_name; ?></td>         
                                  <td><?= $row->Email; ?></td>
                                  <td><?= $row->Usertype_id; ?></td>
-                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID;?>"name="adduser" type="submit">Delete</a></td>
+                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Delete</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>  
+                  </tbody>
+                </table>
+              </div>
+                 <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <h3>Doctors</h3>
+                    <tr>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                     <th>Email</th>
+                        <th>Usertype</th>
+                     <th>Delete</th>
+                    
+                        
+                    </tr>
+                      
+                  </thead>
+                 
+                  <tbody>
+                      <?php if(!empty($results2)): ?>
+                        <?php foreach($results2 as $row) :?>
+                            <tr>
+                                <td><?= $row->First_name; ?></td>  
+                                <td><?= $row->Last_name; ?></td>         
+                                 <td><?= $row->Email; ?></td>
+                                 <td><?= $row->Usertype_id; ?></td>
+                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  
@@ -218,7 +270,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+             <span>Copyright © Appointment System 2018</span>
             </div>
           </div>
         </footer>
