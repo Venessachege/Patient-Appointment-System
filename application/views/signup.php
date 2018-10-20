@@ -20,14 +20,18 @@
 
     <!-- Custom styles for this template-->
     <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+       <link href="../../assets/css/style.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Black Ops One' rel='stylesheet'>
+      
 
   </head>
 
-  <body class="bg-dark">
+  <body class="signbody">
 
     <div class="container">
       <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Register an Account</div>
+          <div class="card-header" style="text-align:center;font-weight:300;font-family: 'Black Ops One';font-size: 18px;">Patient Appointment System</div>
+<!--        <div class="card-header">Register an Account</div>-->
         <div class="card-body">
             <?php
                   $error_msg=$this->session->flashdata('error_msg');

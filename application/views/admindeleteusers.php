@@ -22,63 +22,29 @@
 
     <!-- Custom styles for this template-->
     <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+       <link href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   </head>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+                 <i class="fa fa-user-circle" style="color:red;"></i>
 
-      <a class="navbar-brand mr-1" href="index.html">Doctor</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar Search -->
+      <a class="navbar-brand mr-1" href="index.html">Admin</a>
+   
+    
+       
      
+          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+         <a class="navbar-brand mr-1" href="<?php echo base_url('user_controller/logout');?>">Logout</a>
+         
+        </div>
+      </form>
 
-      <!-- Navbar -->
-<!--
-      <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Activity Log</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </div>
-        </li>
-      </ul>
--->
-
+     
     </nav>
 
     <div id="wrapper">
@@ -87,92 +53,43 @@
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fa fa-home" style="color:red;" aria-hidden="true"></i>
             <span>Home</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Add Users</span></a>
+          <a class="nav-link" href="<?= base_url("user_controller/adminreg");?>">
+            <i class="fa fa-user-circle" style="color:red;"></i>
+            <span class="glyphicon glyphicon-user "aria-hidden="true" >Add Users</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/adminreg");?>">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Delete Users</span></a>
+          <a class="nav-link" href="#">
+           <i class="fa fa-user-circle " style="color:red;"></i>
+            <span class="glyphicon glyphicon-user "aria-hidden="true" >Delete Users</span></a>
         </li>
             <li class="nav-item">
           <a class="nav-link" href="<?= base_url("user_controller/adminbookappointments");?>">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-address-card" style="color:red" aria-hidden="true"></i>
             <span>Book Appointments</span></a>
         </li>
             <li class="nav-item">
           <a class="nav-link" href="<?= base_url("user_controller/admincancelappointments");?>">
-            <i class="fas fa-fw fa-table"></i>
+           <i class="fa fa-times"style="color:red" aria-hidden="true"></i>
             <span>Cancel Appointments</span></a>
         </li>
       </ul>
+
 
       <div id="content-wrapper">
 
         <div class="container-fluid">
 
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Users</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-          </ol>
-
-          <!-- Icon Cards-->
-<!--
-          <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-comments"></i>
-                  </div>
-                  <div class="mr-5">26 New Messages!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-list"></i>
-                  </div>
-                  <div class="mr-5">11 New Appointments</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            
-            
-          </div>
--->
-
-          <!-- Area Chart Example-->
+          <div class="card-header" style="position:center;">Delete an Account</div>
           
 
-          <!-- DataTables Example -->
+          
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-             Users</div>
+           
              
             <div class="card-body">
                  <?php
@@ -195,7 +112,7 @@
                   }
                   ?>
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                     <h3>Patients</h3>
                   <thead>
                     
@@ -203,7 +120,7 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                      <th>Email</th>
-                        <th>Usertype</th>
+                        <th>Edit</th>
                      <th>Delete</th>
                     
                         
@@ -218,8 +135,9 @@
                                 <td><?= $row->First_name; ?></td>  
                                 <td><?= $row->Last_name; ?></td>         
                                  <td><?= $row->Email; ?></td>
-                                 <td><?= $row->Usertype_id; ?></td>
-                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Delete</a></td>
+                                 <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Edit</a></td>
+                                
+                                <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  
@@ -234,7 +152,7 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                      <th>Email</th>
-                        <th>Usertype</th>
+                       <th>Edit</th>
                      <th>Delete</th>
                     
                         
@@ -249,8 +167,8 @@
                                 <td><?= $row->First_name; ?></td>  
                                 <td><?= $row->Last_name; ?></td>         
                                  <td><?= $row->Email; ?></td>
-                                 <td><?= $row->Usertype_id; ?></td>
-                                <td><a class="btn btn-primary btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>">Delete</a></td>
+                                 <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Edit</a></td>
+                                <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  
@@ -258,7 +176,7 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+           
           </div>
 
         </div>

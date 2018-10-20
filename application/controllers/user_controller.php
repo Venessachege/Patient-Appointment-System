@@ -29,7 +29,12 @@ class User_controller extends CI_Controller {
     }
 
     public function register_user(){
-
+        
+//        $this->form_validation->set_rules('confirmpassword', 'Confirm password', 'required|matches[Password]',array(
+//                'matches' => "Passwords do not match"));
+//         if($this->form_validation->run() == FALSE){
+//              $this->load->view('signup');
+//       }else{
         $user=array(
             'First_name'=>$this->input->post('First_name'),
             'Last_name'=>$this->input->post('Last_name'),
@@ -37,22 +42,51 @@ class User_controller extends CI_Controller {
             'Password'=>md5($this->input->post('Password'))
         );
         
-        print_r($user);
+//        print_r($user);
 
         $email_check=$this->user_model->email_check($user['Email']);
 
         if($email_check){
+            
           $this->user_model->register_user($user);
           $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-          redirect('user_controller/login_view');
+            $body = '
+                <p>Dear '.$user['First_name'].',</p>
+                <p>You have been registered to the Patient appointment system</p>
+                <p>These are your details: <br>
+                <strong>Firstname: </strong> '.$user['First_name'].'<br>
+                <strong>Lastname: </strong> '.$user['Last_name'].'<br>
+                
+                ';
+                $settings = array(
+                    'to' => $this->input->post('Email'),
+                    'subject' => 'ACCOUNT REGISTRATION',
+                    'body' => $body
+                );
+                // Send email to user
+                $sent = send_email($settings);
+                if($sent){
+                    redirect('user_controller/login_view');
+                   
+                }else{
+//                    //Set session message
+//                    $this->session->set_flashdata('failed_register','Could not finish registration. Try again later');
+//                      redirect('user_controller/');
+                }
+                
+               
+            }else{
+                  $this->session->set_flashdata('error_msg','Email already exists');
+                  redirect('user_controller/adminreg');
+            }
+            
+         
+         }
+        
+        
 
-        }
-        else{
-          $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-          redirect('user_controller/index');
-        }
-
-    }
+    
+    
     
     public function login_user(){
         $user_login=array(
@@ -71,7 +105,7 @@ class User_controller extends CI_Controller {
             redirect('user_controller/adminreg');
 
         }else{
-            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+            $this->session->set_flashdata('error_msg', 'Credentials do not match');
             $this->load->view("login");
         }
 }
@@ -222,6 +256,12 @@ class User_controller extends CI_Controller {
           $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
           redirect('user');
         }
+    }
+    
+    public function logout(){
+         $this->session->unset_userdata(array('ID','Email','First_name','Last_name'));
+          $this->session->set_flashdata('user_logged_out','You are now logged out');
+            redirect('user_controller/login_user');
     }
     
 }

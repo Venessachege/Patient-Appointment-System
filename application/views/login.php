@@ -20,14 +20,16 @@
 
     <!-- Custom styles for this template-->
     <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+      <link href="../../assets/css/style.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Black Ops One' rel='stylesheet'>
 
   </head>
 
-  <body class="bg-dark">
+  <body class="signbody">
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header" style="text-align:center;font-weight:100;font-family: 'Black Ops One';font-size: 20px;">Login</div>
         <div class="card-body">
              <?php
               $success_msg= $this->session->flashdata('success_msg');
@@ -72,7 +74,7 @@
             <button type="submit" class="btn btn-primary btn-block"  name="login">Login</button>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="signup.php">Register an Account</a>
+            <a class="d-block small mt-3" href="<?= base_url("user_controller/index");?>">Register an Account</a>
             <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
           </div>
         </div>
