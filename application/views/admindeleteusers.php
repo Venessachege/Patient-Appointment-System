@@ -152,6 +152,7 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                      <th>Email</th>
+                    <th>Type</th>
                        <th>Edit</th>
                      <th>Delete</th>
                     
@@ -164,11 +165,12 @@
                       <?php if(!empty($results2)): ?>
                         <?php foreach($results2 as $row) :?>
                             <tr>
-                                <td><?= $row->First_name; ?></td>  
-                                <td><?= $row->Last_name; ?></td>         
+                                <td><?= $row->First_Name; ?></td>  
+                                <td><?= $row->Last_Name; ?></td> 
+                                 <td><?= $row->Type; ?></td>
                                  <td><?= $row->Email; ?></td>
-                                 <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>" type="submit">Edit</a></td>
-                                <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user/").$row->ID.'/'.urlencode($row->Email).'/'.$row->First_name;?>">Delete</a></td>
+                                 <td><a class="btn btn-danger btn-block"   type="submit">Edit</a></td>
+                                <td><a class="btn btn-danger btn-block"  href="<?= base_url("user_controller/delete_user2/").$row->Doctors_id.'/'.urlencode($row->Email).'/'.$row->First_Name;?>">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>  

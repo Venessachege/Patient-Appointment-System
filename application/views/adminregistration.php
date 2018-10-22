@@ -52,7 +52,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="<?= base_url("charts_controller/charts");?>">
           <i class="fa fa-home" style="color:red;" aria-hidden="true"></i>
             <span>Home</span>
           </a>

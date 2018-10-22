@@ -75,7 +75,7 @@
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="<?= base_url("user_controller/index");?>">Register an Account</a>
-            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            <a class="d-block small" href="<?= base_url("user_controller/forgotpassword");?>">Forgot Password?</a>
           </div>
         </div>
       </div>
