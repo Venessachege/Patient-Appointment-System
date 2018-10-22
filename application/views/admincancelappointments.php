@@ -33,40 +33,49 @@
   <body id="page-top">
 
   
+ 
+     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+                 <i class="fa fa-user-circle" style="color:red;"></i>
 
-      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="#">Patient <?= @$First_name;?> <?= @$Last_name;?></a>
-
+      <a class="navbar-brand mr-1" href="index.html">Admin</a>
    
-
-       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    
+       
+     
+          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
          <a class="navbar-brand mr-1" href="<?php echo base_url('user_controller/logout');?>">Logout</a>
          
         </div>
       </form>
-      </nav>
+
+     
+    </nav>
+
     <div id="wrapper">
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="<?= base_url("charts_controller/charts");?>">
           <i class="fa fa-home" style="color:red;" aria-hidden="true"></i>
             <span>Home</span>
           </a>
         </li>
-      
-            <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/book");?>">
-            <i class="fa fa-address-card" style="color:red" aria-hidden="true"></i>
-            <span>Book Appointments</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url("user_controller/adminreg");?>">
+            <i class="fa fa-user-circle" style="color:red;"></i>
+            <span class="glyphicon glyphicon-user "aria-hidden="true" >Add Users</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url("user_controller/admindeleteusers");?>">
+           <i class="fa fa-user-circle " style="color:red;"></i>
+            <span class="glyphicon glyphicon-user "aria-hidden="true" >Delete Users</span></a>
         </li>
             <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/home");?>">
-           <i class="fa fa-times"style="color:red" aria-hidden="true"></i>
-            <span>Available Doctors</span></a>
+          <a class="nav-link" href="<?= base_url("user_controller/adminbookappointments");?>">
+            <i class="fa fa-address-card" style="color:red" aria-hidden="true"></i>
+            <span>Book Appointments</span></a>
         </li>
             <li class="nav-item">
           <a class="nav-link" href="#">
@@ -108,14 +117,14 @@
 			<tbody>
   <?php
   $i=1;
-  foreach($data as $row)
+  foreach($results as $row)
   {
   echo "<tr>";
   echo "<td>".$i."</td>";
   echo "<td>".$row->Available_Date."</td>";
   echo "<td>".$row->Available_Time."</td>";
  
-  echo "<td><a href='deletedata?id=".$row->Doctor_ID."'>Cancel Appointment</a></td>";
+  echo "<td><a href='deletedata2?id=".$row->Patients_ID."'>Cancel Appointment</a></td>";
   echo "</tr>";
   $i++;
   }

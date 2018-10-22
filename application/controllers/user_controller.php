@@ -15,9 +15,7 @@ class User_controller extends CI_Controller {
         );
         $this->load->view('profile',$data);
     }
-    
-   
-    
+      
     public function index(){
         $this->load->view("signup.php");
     }
@@ -91,21 +89,24 @@ class User_controller extends CI_Controller {
             $this->session->set_userdata('Email',$data['Email']);
             $this->session->set_userdata('First_name',$data['First_name']);
             $this->session->set_userdata('Last_name',$data['Last_name']);
-             $this->session->set_userdata('Usertpe_id',$data['Usertype_id']);
+             $this->session->set_userdata('Usertype_id',$data['Usertype_id']);
+            $Usertype_id=$data['Usertype_id'];
          if($Usertype_id==1){
 //        
             redirect('user_controller/adminreg');
+         }else if($Usertype_id==3){
+              redirect('user_controller/book');
          }else{
-              redirect('user_controller/adminreg');
+              redirect('user_controller/doctorsappointments');
          }
         }else{
             $this->session->set_flashdata('error_msg', 'Credentials do not match');
-            $this->load->view("login");
+           redirect('user_controller/login_view');
         }
 }
      //load login view
     public function login_view(){
-        $this->load->view("login.php");
+        $this->load->view("login");
     }
     //logout
     public function user_logout(){
@@ -140,6 +141,57 @@ class User_controller extends CI_Controller {
                 <p>You have been registered to the Patient appointment system</p>
                 <p>These are your details: <br>
                 <strong>Username: </strong> '.$user['First_name'].'<br>
+                <strong>Password: </strong>123456</p>            
+                ';
+                $settings = array(
+                    'to' => $this->input->post('Email'),
+                    'subject' => 'ACCOUNT REGISTRATION',
+                    'body' => $body
+                );
+                // Send email to user
+                $sent = send_email($settings);
+                if($sent){
+                   
+                    //Set session message
+                    $this->session->set_flashdata('user_registered','New user has been registered');
+                    redirect('user_controller/adminreg');
+                }else{
+                    //Set session message
+                    $this->session->set_flashdata('failed_register','Could not finish registration. Try again later');
+                      redirect('user_controller/adminreg');
+                }
+                
+               
+            }else{
+                  $this->session->set_flashdata('error_msg','Email already exists');
+                  redirect('user_controller/adminreg');
+            }
+            
+    }
+    //admin view users       
+     public function adminadddoctor(){
+      $this->form_validation->set_rules('password', 'Password', 'required');
+      $this->form_validation->set_rules('confirmpassword', 'Confirm password', 'required|matches[password]');
+            $user=array(
+                'First_Name'=>$this->input->post('First_Name'),
+                'Last_Name'=>$this->input->post('Last_Name'),
+                'Email'=>$this->input->post('Email'),
+                'Type'=>$this->input->post('Type'),
+                 'password'=>md5($this->input->post('password')),            
+            );
+                  
+             
+            $email_check=$this->user_model->email_check($user['Email']);
+       
+
+            if($email_check){
+              $this->user_model->adminadddoctor($user);
+              $this->session->set_flashdata('success_msg', 'Registered successfully');
+               $body = '
+                <p>Dear '.$user['First_Name'].',</p>
+                <p>You have been registered to the Patient appointment system as a Doctor</p>
+                <p>These are your details: <br>
+                <strong>Username: </strong> '.$user['First_Name'].'<br>
                 <strong>Password: </strong>123456</p>            
                 ';
                 $settings = array(
@@ -244,33 +296,39 @@ class User_controller extends CI_Controller {
             $this->load->view('admincancelappointments',$data);
          }
     //admin book appointments view
-    public function adminbookappointments()
-       {
-      $this->load->view('adminbookappointments');
-        }
+
     //admin book appointments
-    public function adminbookapp(){
-         $user=array(
-            'First_name'=>$this->input->post('First_name'),
-            'Last_name'=>$this->input->post('Last_name'),
-            'Email'=>$this->input->post('Email'),
-            'Password'=>md5($this->input->post('password')),
-            'Usertype_id'=>$this->input->post('Usertype_id')
-        );
+    public function adminbookappointments(){
+         if($this->input->post('book'))
+		{
+		$id=$this->session->userdata("ID");	
+		$e=$this->input->post('availabletime');
+		$p=$this->input->post('doctorid');
+		$m=$this->input->post('time');
+		
+		
+		$que=$this->db->query("select * from appointment where Doctor_ID='".$p."' AND Available_Time='".$m."'");
+		$row = $que->num_rows();
+		if($row)
+		{
+		$data['error']="<h3 style='color:red'>Doctor already Booked</h3>";
+		}
+		else
+		{
+		$que=$this->db->query("INSERT INTO appointment(Patients_ID, Available_Date, Doctor_ID, Available_Time, Approval)  values('$id','$e','$p','$m','Not yet Approved')");
+		
+		$data['error']="<h3 style='color:blue'>Your appointment has been recorded successfully</h3>";
         
-        $email_check=$this->user_model->email_check($user['Email']);
-
-        if($email_check){
-          $this->user_model->adminadduser($user);
-          $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-          redirect('user_controller/adminreg');
-
+            
+		}			
+				
+		}
+		$data['groups'] = $this->user_model->displayrecords();
+		$data['First_name']=$this->session->userdata("First_name");
+		$data['Last_name']=$this->session->userdata("Last_name");
+        $this->load->view('adminbookappointments',$data);
         }
-        else{
-          $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-          redirect('user');
-        }
-    }
+
     //patients appointment function
     public function appointments()
 	{
@@ -327,6 +385,14 @@ class User_controller extends CI_Controller {
 	redirect('user_controller/appointments');
          
 	}
+    public function deletedata2()
+	{
+     $id=$this->input->get('id');
+	$this->user_model->deleterecords2($id);
+   
+	redirect('user_controller/admincancelappointments');
+         
+	}
 
     public function forgotpassword(){
          $this->load->view('forgotpassword');
@@ -357,7 +423,23 @@ class User_controller extends CI_Controller {
           $this->session->set_flashdata('user_logged_out','You are now logged out');
             redirect('user_controller/login_user');
     }
-    
+     public function doctorsappointments()
+	{
+		$id=$this->session->userdata("ID");
+         echo $id;
+         $result['data']=$this->user_model->doctorsappointments($id);
+		$result['First_name']=$this->session->userdata("First_name");
+		$result['Last_name']=$this->session->userdata("Last_name");
+		$this->load->view("doctorviewappointments",$result);
+	}
+     public function doctordeleteappointments()
+	{
+     $id=$this->input->get('id');
+	$this->user_model->doctordelete($id);
+   
+	redirect('user_controller/appointments');
+         
+	}
 }
 
 

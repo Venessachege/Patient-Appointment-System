@@ -150,6 +150,74 @@
             </div>
             <button class="btn btn-primary btn-block" name="adduser" type="submit">Add</button>
           </form>
+        
+		  </div>
+           <div class="card-header" style="position:center;">Register a Doctor</div>
+           <div class="card-body">
+             <?php
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+ 
+                  if($success_msg){
+                    ?>
+                    <div class="alert alert-success">
+                      <?php echo $success_msg; ?>
+                    </div>
+                  <?php
+                  }
+                  if($error_msg){
+                    ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error_msg; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
+        <form  method="post" action="<?php echo base_url('user_controller/adminadddoctor');?>">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" id="First_name" class="form-control"name="First_Name" placeholder="First name" required="required" autofocus="autofocus">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" id="Last_name" class="form-control" placeholder="Last Name" name="Last_Name"required="required">
+                  </div>
+                </div>
+              </div>
+            <div class="form-group">
+          <div class="form-row">
+             <div class="col-md-6">
+              <div class="form-group">
+                <input type="email" id="Email" class="form-control" placeholder="Email address" name="Email" required="required">
+              </div>
+            </div>
+               <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="Type" class="form-control" placeholder="Doctor Type" name="Type" required="required">
+              </div>
+            </div>
+                </div>
+                </div>
+              <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="password" id="password" class="form-control" name="password"placeholder="Password" required="required">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="password" id="confirmpassword" class="form-control" name="confirmpassword"placeholder="Confirm password" required="required">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary btn-block" name="adduser" type="submit">Add</button>
+          </form>
+        
 		  </div>
             
 		  

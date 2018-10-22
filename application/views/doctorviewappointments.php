@@ -22,115 +22,104 @@
 
     <!-- Custom styles for this template-->
     <link href="../../assets/css/sb-admin.css" rel="stylesheet">
-	<link href="../../assets/clockpicker.css" rel="stylesheet">
        <link href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	    
+
+
+    
 
   </head>
-<body>
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-                 <i class="fa fa-user-circle" style="color:red;"></i>
 
-      <a class="navbar-brand mr-1" href="index.html">Admin</a>
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="#">Doctor <?= @$First_name;?> <?= @$Last_name;?></a>
+
    
-    
-       
-     
-          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+
+       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
          <a class="navbar-brand mr-1" href="<?php echo base_url('user_controller/logout');?>">Logout</a>
          
         </div>
       </form>
-
-     
-    </nav>
-
+      </nav>
     <div id="wrapper">
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("charts_controller/charts");?>">
+          <a class="nav-link" href="index.html">
           <i class="fa fa-home" style="color:red;" aria-hidden="true"></i>
             <span>Home</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/adminreg");?>">
-            <i class="fa fa-user-circle" style="color:red;"></i>
-            <span class="glyphicon glyphicon-user "aria-hidden="true" >Add Users</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/admindeleteusers");?>">
-           <i class="fa fa-user-circle " style="color:red;"></i>
-            <span class="glyphicon glyphicon-user "aria-hidden="true" >Delete Users</span></a>
-        </li>
+      
             <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?= base_url("user_controller/book");?>">
             <i class="fa fa-address-card" style="color:red" aria-hidden="true"></i>
-            <span>Book Appointments</span></a>
+            <span>View Appointments</span></a>
         </li>
-            <li class="nav-item">
-          <a class="nav-link" href="<?= base_url("user_controller/appointments");?>">
-           <i class="fa fa-times"style="color:red" aria-hidden="true"></i>
-            <span>Cancel Appointments</span></a>
-        </li>
+          
+         
       </ul>
- <div id="content-wrapper">
+      
+      <div id="content-wrapper">
 
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Book</a>
+              <a href="index.html">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Book Appointment</li>
+            <li class="breadcrumb-item active">Available Doctors</li>
           </ol>
 
           <!-- Page Content -->
-          <h1>Book an Appointment</h1>
-		  <?php echo @$error; ?>
+          <h1>Appointments</h1>
           <hr>
-        <div class="card-body">
-          <form method="post">
-            <div class="form-group">
-              <div class="form-row">
-                <div class="col-md-4">
-                  <div class="form-label-group">
-                    <input type="date" id="lastName" name="availabletime" class="form-control" placeholder="Last name" required="required">
-                    <label for="lastName">Available Date</label>
-                  </div>
-                </div>
-				 <div class="col-md-4">
-					<div class="input-group clockpicker"  data-align="top" data-autoclose="true">
-					<label>Available Time</label>
-    <input type="text" class="form-control" name="time" value="">
-    <span class="input-group-addon">
-        <span class="glyphicon glyphicon-time"></span>
-    </span>
-</div>
-                  </div>
-                
-				<div class="col-md-4">
-                    <select class="form-control" name="doctorid">
-					<?php foreach($groups as $row){ ?>
-					<option value="<?php echo $row->Doctors_id; ?>"><?php echo $row->First_Name; ?> - <?php echo $row->Type; ?></option>';
-					<?php } ?>
-					</select>
-                  </div>
-                </div>
-              </div>
-        
-           
-            <input type="submit" class="btn btn-primary btn-block" name="book" value="Book">
-          </form>
+		  <div class="card-body">
+		  <div class="row">
+		  <div class="col-md-12">
+		  <div class="table-responsive">
+		  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		  <thead>
+                    <tr>
+					  <th>Doctors id</th>
+                      <th> Patient id</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Cancel</th>
+                    </tr>
+            </thead>
+			
+			<tbody>
+			  <?php
+  foreach($data as $row)
+  {
+  echo "<tr>";
+  echo "<td>".$row->Doctor_ID."</td>";
+  echo "<td>".$row->Patients_ID."</td>";
+  echo "<td>".$row->Available_Date."</td>";
+  echo "<td>".$row->Available_Time."</td>";
+  echo "<td><a href='deletedata?id=".$row->Patients_ID."'>Cancel Appointment</a></td>";
+  echo "</tr>";
+
+  }
+   ?>
+			</table>
+			
 		  </div>
-		  
+		  </div>
+		  </div>
+		  </div>
 
         </div>
         <!-- /.container-fluid -->
+
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
@@ -171,20 +160,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../assets/js/sb-admin.min.js"></script>
-	<script src="../../assets/clockpicker.js"></script>
-	<script type="text/javascript">
-$('.clockpicker').clockpicker();
-</script>
-	
-	
+    <script src="js/sb-admin.min.js"></script>
 
   </body>
 

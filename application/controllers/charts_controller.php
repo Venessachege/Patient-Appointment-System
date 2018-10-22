@@ -45,11 +45,11 @@ class charts_controller extends CI_Controller
             { 
             $responce->rows[]["c"] = array( 
                 array( 
-                    "v" => "$cd->First_name", 
+                    "v" => "$cd->Type", 
                     "f" => null 
                 ) , 
                 array( 
-                    "v" => (int)$cd->ID, 
+                    "v" => (int)$cd->Doctors_id, 
                     "f" => null 
                 ) 
             ); 
